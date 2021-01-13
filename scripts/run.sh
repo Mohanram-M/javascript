@@ -21,8 +21,3 @@ else
         docker rm $(docker kill $CONT_ID)
     fi
 fi
-
-
-
-
-

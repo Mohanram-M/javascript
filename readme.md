@@ -11,5 +11,4 @@
 - edit or add a new file in one of algo / pattern folder and execute script/run.sh
 - use scripts/stop.sh to stop /cleanup the image
 - the run script automatically picks up the latest edited file and runs it.
-
 ----------
