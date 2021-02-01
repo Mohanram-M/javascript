@@ -38,7 +38,7 @@
     }
  }
 
- let stack=new Stack();
+ let stack=new Stack() ;
  console.log('Pushed 1:',stack.push(1));
  console.log('Pushed 2:',stack.push(2));
  console.log('Pushed 3:',stack.push(3));
