@@ -35,6 +35,7 @@ else
         docker run -it -v $LATEST_MODIFIED_FILE:/app/$LATEST_MODIFIED_FILE_NM -v $LATEST_MODIFIED_DIR/$LATEST_JS_RESULT_FILE:/app/$LATEST_JS_RESULT_FILE $IMG_NM tsc --outFile /app/$LATEST_JS_RESULT_FILE /app/$LATEST_MODIFIED_FILE_NM
         echo "typescript compilation done, running compiled js file"
         docker run -v $LATEST_MODIFIED_DIR/$LATEST_JS_RESULT_FILE:/app/$LATEST_JS_RESULT_FILE $IMG_NM node /app/$LATEST_JS_RESULT_FILE
+        echo "">>$LATEST_MODIFIED_FILE
         
     elif [[ "$LATEST_MODIFIED_FILE_NM" == *".js"* ]]; then
         docker build -t $IMG_NM -f $SCRIPT_DIR/Dockerfile $SCRIPT_DIR

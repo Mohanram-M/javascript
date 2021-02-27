@@ -6,22 +6,16 @@
  */
 
  var majorityElement = function(nums){
-
-    count=0;
-    candidate=null;
-
-    for(num of nums){
-        if(count===0){
-            candidate=num;
+    let count=0;
+    let candidate=null;
+    for(x of nums){
+        if(count==0){
+            candidate=x;
         }
-
-        count+=(candidate===num)?+1:-1;
+        count+=(candidate===x)?+1:-1;
     }
-
-    return candidate;
-
+    return candidate
  }
 
  console.log(majorityElement([1,2,1,3,1,4,1,1,1]));
  console.log(majorityElement([5,3,4,6,3,3,8,3,3]));
-

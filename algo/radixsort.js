@@ -20,7 +20,7 @@ function getMaxLength(arr){
 }
 
 function getLength(val){
-    return Math.ceil(Math.log10(val));
+    return Math.floor(Math.log10(val)) +1 ;
 }
 
 function getDigit(val,pos){

@@ -29,19 +29,18 @@ var singleNumberWithDuplicatesAppearingThrice = function(nums){
 
     let once=0;
     let twos=0;
-    let not_thrice;
+    let notThrees=0;
     for(x of nums){
+        twos=twos | (once & x);
+        once=once ^ x;
+        notThrees=~(once & twos);
 
-        twos = twos |(once & x);
-        once = once ^ x;
-        not_thrice= ~(once & twos);
-
-        once=once & not_thrice;
-        twos=twos & not_thrice;
-
+        once = once & notThrees;
+        twos = twos & notThrees;
     }
     
     return once;
+
 };
 
 
@@ -52,29 +51,24 @@ console.log(singleNumberWithDuplicatesAppearingThrice([1,3,1,5,3,1,2,2,3,2]));
 
 var singleNumberWithDuplicatesAppearingfives= function(nums){
 
-    let once=0;
-    let twos=0;
-    let threes=0;
-    let fours=0;
-    let not_fives;
+    let times=[];
+   
     for(x of nums){
-
-        fours = fours | (threes & x);
-        threes= threes | (twos & x);
-        twos = twos |(once & x);
-        once = once ^ x;
-        not_fives= ~(once & twos & threes & fours);
-
-        once=once & not_fives;
-        twos=twos & not_fives;
-        threes=threes & not_fives;
-        fours=fours & not_fives;
+        
+        for(let i=3;i>0;i--){
+            times[i]=times[i] | (times[i-1] & x); 
+        }
+        times[0]=times[0]^x;
+        times[4]=~(times[0]&times[1]&times[2]&times[3])
+        for(let i=0;i<4;i++){
+            times[i]=times[i]&times[4];
+        }
 
     }
-    
-    return once;
+   
+    return times[0];
 };
 
 
-console.log(singleNumberWithDuplicatesAppearingfives([1,1,1,3,1,1,1]));
+console.log(singleNumberWithDuplicatesAppearingfives([1,1,1,3,1,1]));
 console.log(singleNumberWithDuplicatesAppearingfives([5,5,5,7,5,5,7,7,7,7,19]));
